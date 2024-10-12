@@ -6,7 +6,7 @@ from bs4 import BeautifulSoup
 
 class Indexer:
     def __init__(self, stop_words=None):
-        self.index = defaultdict(list)  # Term -> list of (doc_id, lnc)
+        self.index = defaultdict(dict)  # Term -> list of (doc_id, lnc)
         self.documents = {}              # doc_id -> tokens
         self.doc_lengths = {}            # doc_id -> length for cosine normalization
         self.doc_freq = defaultdict(int)  # Term -> document frequency (df)
@@ -51,15 +51,19 @@ class Indexer:
         # Store lnc (Logarithmic Normalized Count) in the index
         self.doc_lengths[doc_id] = 0  # Initialize document length for normalization
         for term, freq in tf.items():
-            # lnc = 1 + log10(tf)
-            lnc = 1 + math.log10(freq) if freq > 0 else 0
-            self.index[term].append((doc_id, lnc))
+            #INFO: Calculates the LN part of LNC
+            tf_raw = freq
+            tfSTAR_wt = 1+math.log10(tf_raw)
+            wt = tfSTAR_wt * 1 if freq > 0 else 0
+            self.index[term].setdefault(doc_id, {"wt": wt})
             
             # Update document length (sum of squared term weights)
-            self.doc_lengths[doc_id] += lnc ** 2
+            self.doc_lengths[doc_id] += wt ** 2
 
         # Normalize document length (for cosine normalization)
-        self.doc_lengths[doc_id] = math.sqrt(self.doc_lengths[doc_id])
+        # INFO: Calculates the Cosine Normalization of the LN part = LNC
+        for term, freq in tf.items():
+            self.index[term][doc_id]['norm_wt'] = self.index[term][doc_id]['wt']*(1/(math.sqrt(self.doc_lengths[doc_id])))
 
     def idf(self, term):
         # Calculate inverse document frequency (idf)
@@ -69,4 +73,3 @@ class Indexer:
 
     def get_index(self):
         return dict(self.index)
-

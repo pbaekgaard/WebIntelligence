@@ -1,6 +1,6 @@
 # Notes for the exam about the Search Engine
 
-## Session 1 - Crawling
+## Session 2 - Crawling
 
 Currently the crawler doesn't have any content filtering. That is, the crawler
 will look for any href tags it can find and then add that to the frontier. Due
@@ -16,8 +16,30 @@ passed when the crawler is started first to make sure we don't visit any of
 these first unless its the seed url. And then load the CSV / JSON into the
 `self.visited` set.
 
-## Session 2 - Indexing
+In terms of the crawling for relative links. Those where not accounted for, so
+the crawler will in its current state (12/10/2024) also visit these, which will
+inevitably course some troubles with duplicates.
 
-## Session 3 - Ranking
+## Session 3 - Indexing
 
-## Session 4 - Ranking (link-based)
+In the previous session the crawling method was implemented which simply would
+fetch the URL's and then check the html from the url for other urls and then
+keep going.
+
+For this part, the indexer was implemented which simultaniously also checks the
+near duplicates. This near duplicates function is VERY slow. and can sometimes
+take up for 12 seconds in my PC (Lenovo Yoga Slim 7 Pro with 16GB RAM and a
+Ryzen 5600H).
+
+Not much processing or normalization where performed on the terms in the content
+of the pages. That is, it could be improved my using a Stemmer like
+PorterStemmer to get the words down to their base, this would also make the
+crawling more efficient.
+
+## Session 4 - Ranking
+
+Ranking was done by using the LNC-LTC method and works great. It was tested on
+the example document from the slides during the lecture and yielded the same
+results
+
+## Session 5 - Ranking (link-based)

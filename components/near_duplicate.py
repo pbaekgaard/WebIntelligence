@@ -4,7 +4,7 @@ import hashlib
 class Jaccard:
     def __init__(self):
         self.shingle_size = 3
-        self.sketch_size = 12
+        self.sketch_size = 84
 
     def near_duplicate(self, content, index, SIMILARITY_THRESHOLD):
         for _, indexed_html in index.items():

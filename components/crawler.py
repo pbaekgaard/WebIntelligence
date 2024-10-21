@@ -32,8 +32,8 @@ class Crawler:
         soup = BeautifulSoup(html_content, "html.parser")
 
         # Remove <script> and <style> tags
-        for script_or_style in soup(["script", "style"]):
-            script_or_style.decompose()
+        for element in soup(['script', 'style', 'meta', 'head', 'footer', 'link', 'noscript']):
+            element.extract()
 
         return soup
 

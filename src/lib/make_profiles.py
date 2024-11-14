@@ -1,10 +1,10 @@
 import json
 
 
-def make_user_profiles(reviews, meta):
+def make_user_profiles(reviews, products):
     user_profiles = {}
     for index, review in reviews.iterrows():
-        product = [prod for index, prod in meta.iterrows() if prod["asin"] == review["asin"]][0]
+        product = [prod for index, prod in products.iterrows() if prod["asin"] == review["asin"]][0]
         if product is not None:
             if review["reviewerID"] not in user_profiles:
                 user_profiles[review["reviewerID"]] = []

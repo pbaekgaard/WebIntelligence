@@ -1,0 +1,43 @@
+\newcommand{\name}{\textbf{Full Name:} Peter Bækgaard}
+\newcommand{\studynr}{\textbf{Study Number:} 20212624}
+\newcommand{\fieldofstudy}{\textbf{Field of Study:} Software - SW7}
+
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+%\usepackage{gentium}
+\usepackage{mathptmx} % Use Times Font
+
+
+\usepackage[pdftex]{graphicx} % Required for including pictures
+\usepackage{babel}
+\usepackage[pdftex,linkcolor=black,pdfborder={0 0 0}]{hyperref} % Format links for pdf
+\usepackage{calc} % To reset the counter in the document after title page
+\usepackage{enumitem} % Includes lists
+
+\frenchspacing % No double spacing between sentences
+\linespread{1.2} % Set linespace
+\usepackage[a4paper, lmargin=0.1666\paperwidth, rmargin=0.1666\paperwidth, tmargin=0.1111\paperheight, bmargin=0.1111\paperheight]{geometry} %margins
+%\usepackage{parskip}
+
+\usepackage[all]{nowidow} % Tries to remove widows
+\usepackage[protrusion=true,expansion=true]{microtype} % Improves typography, load after fontpackage is selected
+
+\usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+\fancyhf{} % Clear all headers and footers
+\lhead{\name \\ \studynr \\ \fieldofstudy}
+% \setlength{\headheight}{15pt} % Adjust as needed (default is 12pt)
+\setlength{\headsep}{40pt} % Space between the header and the body
+%-----------------------
+% Set pdf information and add title, fill in the fields
+%-----------------------
+\hypersetup{ 	
+pdfsubject = {},
+pdftitle = {WI Exam 2025, written assignment},
+pdfauthor = {Åsmundur Alexander Kjærbæk Thorsen}
+}
+
+
+

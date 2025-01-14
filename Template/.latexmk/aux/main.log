@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/Homebrew) (preloaded format=pdflatex 2024.10.30)  8 JAN 2025 11:50
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/Homebrew) (preloaded format=pdflatex 2024.10.30)  13 JAN 2025 10:50
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -8,8 +8,8 @@ LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
 (/home/linuxbrew/.linuxbrew/Cellar/texlive/20240312_3/share/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2023/05/17 v1.4n Standard LaTeX document class
-(/home/linuxbrew/.linuxbrew/Cellar/texlive/20240312_3/share/texmf-dist/tex/latex/base/size11.clo
-File: size11.clo 2023/05/17 v1.4n Standard LaTeX file (size option)
+(/home/linuxbrew/.linuxbrew/Cellar/texlive/20240312_3/share/texmf-dist/tex/latex/base/size10.clo
+File: size10.clo 2023/05/17 v1.4n Standard LaTeX file (size option)
 )
 \c@part=\count188
 \c@section=\count189
@@ -792,23 +792,23 @@ Package hyperref Info: Link coloring OFF on input line 9.
 * layout: <same size as paper>
 * layoutoffset:(h,v)=(0.0pt,0.0pt)
 * modes: 
-* h-part:(L,W,R)=(99.54208pt, 398.4237pt, 99.54208pt)
-* v-part:(T,H,B)=(93.88406pt, 657.27872pt, 93.88406pt)
+* h-part:(L,W,R)=(102.33875pt, 392.83038pt, 102.33875pt)
+* v-part:(T,H,B)=(88.32056pt, 668.40573pt, 88.32056pt)
 * \paperwidth=597.50787pt
 * \paperheight=845.04684pt
-* \textwidth=398.4237pt
-* \textheight=657.27872pt
-* \oddsidemargin=27.2721pt
-* \evensidemargin=27.2721pt
-* \topmargin=-15.38593pt
+* \textwidth=392.83038pt
+* \textheight=668.40573pt
+* \oddsidemargin=30.06876pt
+* \evensidemargin=30.06876pt
+* \topmargin=-20.94943pt
 * \headheight=12.0pt
 * \headsep=40.0pt
-* \topskip=11.0pt
+* \topskip=10.0pt
 * \footskip=30.0pt
-* \marginparwidth=50.0pt
-* \marginparsep=10.0pt
+* \marginparwidth=65.0pt
+* \marginparsep=11.0pt
 * \columnsep=10.0pt
-* \skip\footins=10.0pt plus 4.0pt minus 2.0pt
+* \skip\footins=9.0pt plus 4.0pt minus 2.0pt
 * \hoffset=0.0pt
 * \voffset=0.0pt
 * \mag=1000
@@ -837,17 +837,17 @@ Package microtype Info: No adjustment of character kerning.
 (/home/linuxbrew/.linuxbrew/Cellar/texlive/20240312_3/share/texmf-dist/tex/latex/microtype/mt-ptm.cfg
 File: mt-ptm.cfg 2006/04/20 v1.7 microtype config. file: Times (RS)
 ) (./content/Introduction.tex) (./content/Topic.tex
-Overfull \hbox (18.92802pt too wide) in paragraph at lines 1--1
+Overfull \hbox (24.52135pt too wide) in paragraph at lines 1--1
 []\T1/ptm/b/n/14.4 (-20) TOPIC (Search Engine, Recommender Systems, Neural Networks) 
  []
 
-) (./content/Implementation.tex) (./content/Discussion.tex) (./content/Conclusion.tex)
+) (./content/Implementation.tex) (./content/Discussion.tex) (./content/Conclusion.tex) (.latexmk/aux/main.bbl)
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 38.82454pt, for example:
-(fancyhdr)                \setlength{\headheight}{38.82454pt}.
+(fancyhdr)                Make it at least 34.48999pt, for example:
+(fancyhdr)                \setlength{\headheight}{34.48999pt}.
 (fancyhdr)                You might also make \topmargin smaller to compensate:
-(fancyhdr)                \addtolength{\topmargin}{-26.82454pt}.
+(fancyhdr)                \addtolength{\topmargin}{-22.48999pt}.
 
 [1{/home/linuxbrew/.linuxbrew/Cellar/texlive/20240312_3/share/texmf-dist/fonts/map/pdftex/updmap/pdftex.map}{/home/linuxbrew/.linuxbrew/Cellar/texlive/20240312_3/share/texmf-dist/fonts/enc/dvips/base/8r.enc}
 
@@ -860,18 +860,18 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: BD6495AB538C64613AC2AFF10738DD16;764.
  ) 
 Here is how much of TeX's memory you used:
- 13068 strings out of 474116
- 219297 string characters out of 5726073
- 1929187 words of memory out of 5000000
- 35224 multiletter control sequences out of 15000+600000
- 570069 words of font info for 60 fonts, out of 8000000 for 9000
+ 13085 strings out of 474116
+ 219596 string characters out of 5726073
+ 1931187 words of memory out of 5000000
+ 35233 multiletter control sequences out of 15000+600000
+ 569893 words of font info for 61 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  84i,11n,96p,1001b,461s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </home/linuxbrew/.linuxbrew/Cellar/texlive/20240312_3/share/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></home/linuxbrew/.linuxbrew/Cellar/texlive/20240312_3/share/texmf-dist/fonts/type1/urw/times/utmr8a.pfb>
-Output written on .latexmk/aux/main.pdf (1 page, 28108 bytes).
+Output written on .latexmk/aux/main.pdf (1 page, 33503 bytes).
 PDF statistics:
- 47 PDF objects out of 1000 (max. 8388607)
- 39 compressed objects within 1 object stream
- 7 named destinations out of 1000 (max. 500000)
+ 50 PDF objects out of 1000 (max. 8388607)
+ 42 compressed objects within 1 object stream
+ 9 named destinations out of 1000 (max. 500000)
  14377 words of extra memory for PDF output out of 14400 (max. 10000000)
 

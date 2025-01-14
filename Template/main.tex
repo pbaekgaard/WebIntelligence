@@ -1,16 +1,19 @@
 %--------------------
 % Packages
 % -------------------
-\documentclass[11pt,a4paper]{article}
+\documentclass[letterpaper,10pt]{article}
 \input{setup/preamble.tex}
 %-----------------------
 % Begin document
 %-----------------------
 \begin{document}
-
 \input{content/Introduction}
 \input{content/Topic}
 \input{content/Implementation}
+Let's cite! Einstein's journal paper \cite{copetSimpleControllableMusic2024} and Dirac's
+book.
 \input{content/Discussion}
 \input{content/Conclusion}
+\bibliographystyle{abbrv}
+\bibliography{setup/WebIntelligenceExam} % Name of your .bib file (without the extension)
 \end{document}

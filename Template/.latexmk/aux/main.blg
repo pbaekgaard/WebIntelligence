@@ -1,0 +1,46 @@
+This is BibTeX, Version 0.99d (TeX Live 2024/Homebrew)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: main.aux
+The style file: abbrv.bst
+Database file #1: setup/WebIntelligenceExam.bib
+You've used 1 entry,
+            2118 wiz_defined-function locations,
+            504 strings with 3993 characters,
+and the built_in function-call counts, 441 in all, are:
+= -- 32
+> -- 43
+< -- 0
++ -- 17
+- -- 16
+* -- 39
+:= -- 83
+add.period$ -- 2
+call.type$ -- 1
+change.case$ -- 11
+chr.to.int$ -- 0
+cite$ -- 1
+duplicate$ -- 7
+empty$ -- 23
+format.name$ -- 16
+if$ -- 81
+int.to.chr$ -- 0
+int.to.str$ -- 1
+missing$ -- 0
+newline$ -- 7
+num.names$ -- 2
+pop$ -- 16
+preamble$ -- 1
+purify$ -- 10
+quote$ -- 0
+skip$ -- 8
+stack$ -- 0
+substring$ -- 5
+swap$ -- 1
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 4
+warning$ -- 0
+while$ -- 2
+width$ -- 2
+write$ -- 10

@@ -1,10 +1,10 @@
-import math
-import nltk
-from nltk.stem import PorterStemmer
-from nltk.corpus import stopwords
-import re
 import json
+import math
+import re
 
+import nltk
+from nltk.corpus import stopwords
+from nltk.stem import PorterStemmer
 
 ps = PorterStemmer()
 
@@ -259,7 +259,9 @@ def querier_v2(query):
     idf = {}
     doc_length = 0
 
-    complete_stemmed_query = stem_query(query, False)
+    complete_stemmed_query = []
+    for word in query.split():
+        complete_stemmed_query.append(stemming(word))
 
     for word in complete_stemmed_query:
         idf[word] = inverted_index[word]["idf"] if word in inverted_index else 0
@@ -282,6 +284,64 @@ def querier_v2(query):
                 scores[doc_id] += wt_index * wt_query
 
     return scores
+
+def querier_v4(query):
+    def parse_query(query):
+        """Parse the query to split it into tokens and identify operators."""
+        tokens = query.split()
+        parsed = []
+        for token in tokens:
+            if token.upper() in {"AND", "OR", "NOT"}:
+                parsed.append(token.upper())
+            else:
+                parsed.append(stemming(token))  # Stem non-operator words
+        return parsed
+
+    def extract_doc_ids(doc_list):
+        """Extract document IDs from the list of dictionaries."""
+        return {int(list(doc.keys())[0]) for doc in doc_list}
+
+    def process_query(parsed_query, inverted_index):
+        """Evaluate the parsed query to find matching documents."""
+        stack = []
+        for token in parsed_query:
+            if token == "AND":
+                # Perform intersection between the last two sets
+                if len(stack) >= 2:
+                    b = stack.pop()
+                    a = stack.pop()
+                    stack.append(a & b)
+            elif token == "OR":
+                # Perform union between the last two sets
+                if len(stack) >= 2:
+                    b = stack.pop()
+                    a = stack.pop()
+                    stack.append(a | b)
+            elif token == "NOT":
+                # Perform subtraction of the last set from the one before it
+                if len(stack) >= 2:
+                    b = stack.pop()
+                    a = stack.pop()
+                    stack.append(a - b)
+            else:
+                # Push the document set for the term onto the stack
+                doc_ids = extract_doc_ids(inverted_index.get(token, {}).get("doc_ids", []))
+                stack.append(doc_ids)
+        
+        # The final result should be the only set remaining in the stack
+        return stack.pop() if stack else set()
+
+    with open("inverted_index.json", "r") as file:
+        inverted_index = json.load(file)
+
+    parsed_query = parse_query(query)
+    matching_docs = process_query(parsed_query, inverted_index)
+
+    return list(matching_docs)
+
+def stemming(word):
+    ps = PorterStemmer()
+    return ps.stem(word)
 
 def stem_query(query, with_and):
     cleaned_input = clean_input_strings(query)
@@ -357,20 +417,21 @@ def normalize_query(query):
     pass
 
 def remove_stop_words(query):
-    return " ".join([word for word in re.split("\s+", query) if word not in stopwords.words('english')])
+    return " ".join([word for word in query.split() if word not in stopwords.words('english')])
 
 def get_query():
     return "nyheder og information"
 
 def get_links(doc_ids, limit):
+
     with open("crawled_data.json", "r") as file:
         file_content = json.load(file)
     links = []
     for id in doc_ids[:limit]:
-        links.extend([link for link, content in file_content.items() if content[0] == id])
+        links.extend([link for link, content in file_content.items() if content[0] == int(id)])
     return links
 
 def start_query(query):
     query = remove_stop_words(query)
-    result = querier_v2(query)
+    result = querier_v4(query)
     return result

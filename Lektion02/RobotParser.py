@@ -1,8 +1,11 @@
-import requests
 from urllib.parse import urlparse, urlunparse
+
+import requests
+
 from .FindCrawlDelay import find_crawl_delay
 from .FindUserAgents import find_user_agents
 from .ParseRules import parse_rules
+
 
 def Robotparser(url, user_agent="*"):
     """Main function to parse robots.txt from a URL and return rules, crawl-delay, and sitemaps."""
@@ -16,7 +19,8 @@ def Robotparser(url, user_agent="*"):
     
     try:
         # Fetch the robots.txt content from the constructed URL
-        response = requests.get(robots_txt_url)
+        print(f"\'{robots_txt_url}\'")
+        response = requests.Session().get(robots_txt_url)
         response.raise_for_status()  # Raise an error for bad responses (e.g., 404)
         robots_txt_content = response.text
     except requests.RequestException as e:

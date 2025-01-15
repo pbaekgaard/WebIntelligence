@@ -1,7 +1,8 @@
 from urllib.parse import urljoin
 
-from bs4 import BeautifulSoup, Comment 
 import requests
+from bs4 import BeautifulSoup, Comment
+
 
 def fetch_html(url):
     """Fetches HTML content of a URL and returns visible text in the browser."""
@@ -28,10 +29,11 @@ def fetch_html(url):
         return None, None
 
 def extract_links(soup, base_url):
-    """Extracts and returns all unique links from a BeautifulSoup object."""
+    """Extracts and returns all unique HTTPS links from a BeautifulSoup object."""
     links = set()
     for link in soup.find_all('a', href=True):
         href = link.get('href')
         full_url = urljoin(base_url, href)
-        links.add(full_url)
+        if full_url.startswith('https://') and not full_url.endswith('.pdf'):  # Only add HTTPS links
+            links.add(full_url)
     return links

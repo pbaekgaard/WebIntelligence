@@ -1,11 +1,13 @@
 import argparse
 import asyncio
 import json
-from Lektion02.crawler import start_crawler, URL_seed
+
+from Lektion02.crawler import URL_seed, start_crawler
 from Lektion03.indexer import start_indexing
-from Lektion03.querier import start_query, get_links
-from Lektion04.ranker_v1 import start_ranker_v1
-from Lektion05.ranker_v2 import start_ranker_v2
+from Lektion03.querier import get_links, start_query
+from Lektion04.ranker_v1 import VSM
+from Lektion05.ranker_v2 import PageRank, rank_pages_with_pagerank
+from rankers.aggregated import aggregate
 
 parser = argparse.ArgumentParser()
 
@@ -15,11 +17,17 @@ parser.add_argument('-i', '--index', help="Start indexer", action='store_true')
 
 args = parser.parse_args()
 limit = 10
-
+URL_seed = [
+    "https://www.allianztravelinsurance.com",
+    "https://cphpost.dk/",
+    "https://www.travelguard.com/",
+    "https://www.bbc.com/news",
+]
 if __name__ == "__main__":
     if args.crawl:
         # Run the crawling process
-        asyncio.run(start_crawler(URL_seed))
+        # print(URL_seed)
+        asyncio.run(start_crawler(URL_seed, crawl_limit=200))
 
     if args.index:
         with open("crawled_data.json", "r") as file:
@@ -27,18 +35,48 @@ if __name__ == "__main__":
         start_indexing(content)
         
     if args.query:
-        QUERY = "nyheder og information"
-        print(f"QUERYING: {QUERY}")
-        scores = start_query(QUERY)
-        # ranked_pages_v1 = start_ranker_v1(scores)
-        # links = get_links(ranked_pages_v2, limit)
-        ranked_pages_v2 = start_ranker_v2(scores)
-        print(ranked_pages_v2[:limit])
-        print("\n\n")
-        QUERY = "insurance and vacation"
-        print(f"QUERYING: {QUERY}")
-        scores = start_query(QUERY)
-        # ranked_pages_v1 = start_ranker_v1(scores)
-        # links = get_links(ranked_pages_v2, limit)
-        ranked_pages_v2 = start_ranker_v2(scores)
-        print(ranked_pages_v2[:limit])
+        with open("crawled_data.json", "r") as file:
+            content = json.load(file)
+        QUERY = "world news and information and politics"
+        QUERY2 = "insurance and vacation"
+
+        # Query and rank using VSM
+        # query_results = start_query(QUERY)
+        #
+        # ranked_query_results = VSM(QUERY,query_results)
+        # print(f"RESULT FROM QUERY: {QUERY}\n")
+        # print(ranked_query_results)
+        # print("\n\n")
+        #
+        # query_results = start_query(QUERY2)
+        #
+        # ranked_query_results = VSM(QUERY2,query_results)
+        # print(f"RESULT FROM QUERY: {QUERY2}\n")
+        # print(ranked_query_results)
+        # print("\n\n")
+
+
+
+        # Query and rank using PageRank
+        # ranked_pages_v2 = PageRank(content)
+        #
+        # print(f"QUERYING USING PAGERANK: {QUERY}")
+        # query_results = start_query(QUERY)
+        # query_links = get_links(query_results, limit)
+        # results = rank_pages_with_pagerank(query_links)
+        # print(f"RESULTS: {results}")
+        #
+        # print(f"QUERYING USING PAGERANK: {QUERY2}")
+        # query_results = start_query(QUERY2)
+        # query_links = get_links(query_results, limit)
+        # results = rank_pages_with_pagerank(query_links)
+        # print(f"RESULTS: {results}")
+        #
+        # Query and rank using Aggregated VSM and PageRank
+        page_ranked_content = PageRank(content)
+        query_results = start_query(QUERY)
+        vsm_results = VSM(QUERY,query_results)
+        aggregated_results = aggregate(vsm_results, page_ranked_content)
+
+
+

@@ -1,5 +1,5 @@
-import re
 import random
+import re
 
 # Define a large prime number to be used in the permutation
 LARGE_PRIME = 2**61 - 1
@@ -41,7 +41,7 @@ def jaccard_similarity_normal(doc1: str, doc2: str, shingles_size: int):
     # Compute Union
     union = shingles_doc_1.union(shingles_doc_2)
 
-    jaccard_similarity = len(intersec) / len(union)
+    jaccard_similarity = len(intersec) / len(union) if len(union) != 0 else 0
 
     return jaccard_similarity
 

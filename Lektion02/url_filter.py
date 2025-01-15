@@ -1,9 +1,10 @@
 from urllib.parse import urlparse
 
+
 def url_filter(url, politeness_rules):
     """Check if the given URL can be crawled based on politeness rules."""
     if not politeness_rules:
-        return True  # No politeness rules, so assume crawling is allowed
+        return False  # No politeness rules, so assume crawling is allowed
     
     disallowed_paths = politeness_rules.get("Disallow", [])
     crawl_delay = politeness_rules.get("Crawl-delay", None)

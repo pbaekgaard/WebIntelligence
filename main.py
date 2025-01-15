@@ -77,6 +77,7 @@ if __name__ == "__main__":
         query_results = start_query(QUERY)
         vsm_results = VSM(QUERY,query_results)
         aggregated_results = aggregate(vsm_results, page_ranked_content)
+        print(aggregated_results)
 
 
 

@@ -1,6 +1,6 @@
 # Dictionary to store URLs and their HTML content
 # In your crawler.py
-from Lektion01.Exercise1 import jaccard_similarity_normal
+from components.jaccard import jaccard_similarity_normal
 
 
 def store_in_dict(url, html_content, url_html_dict, links, doc_id):

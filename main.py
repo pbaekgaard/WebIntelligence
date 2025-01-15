@@ -27,7 +27,7 @@ if __name__ == "__main__":
     if args.crawl:
         # Run the crawling process
         # print(URL_seed)
-        asyncio.run(start_crawler(URL_seed, crawl_limit=200))
+        asyncio.run(start_crawler(URL_seed, crawl_limit=2))
 
     if args.index:
         with open("crawled_data.json", "r") as file:

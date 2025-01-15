@@ -2,12 +2,12 @@ import argparse
 import asyncio
 import json
 
-from Lektion02.crawler import URL_seed, start_crawler
-from Lektion03.indexer import start_indexing
-from Lektion03.querier import get_links, start_query
-from Lektion04.ranker_v1 import VSM
-from Lektion05.ranker_v2 import PageRank, rank_pages_with_pagerank
-from rankers.aggregated import aggregate
+from components.crawler.crawler import URL_seed, start_crawler
+from components.indexer import start_indexing
+from components.querier import get_links, start_query
+from components.rankers.aggregated import aggregate
+from components.rankers.pagerank import PageRank, rank_pages_with_pagerank
+from components.rankers.vsm import VSM
 
 parser = argparse.ArgumentParser()
 

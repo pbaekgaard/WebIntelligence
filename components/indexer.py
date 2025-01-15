@@ -2,7 +2,6 @@ import json
 import math
 import re
 
-import numpy as np
 from nltk.stem import PorterStemmer
 
 

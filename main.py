@@ -41,43 +41,63 @@ if __name__ == "__main__":
         QUERY2 = "insurance and vacation"
 
         # Query and rank using VSM
-        # query_results = start_query(QUERY)
-        #
-        # ranked_query_results = VSM(QUERY,query_results)
-        # print(f"RESULT FROM QUERY: {QUERY}\n")
-        # print(ranked_query_results)
-        # print("\n\n")
-        #
-        # query_results = start_query(QUERY2)
-        #
-        # ranked_query_results = VSM(QUERY2,query_results)
-        # print(f"RESULT FROM QUERY: {QUERY2}\n")
-        # print(ranked_query_results)
-        # print("\n\n")
+
+        print("=" * 50)
+        print(" " * 19 + "VSM RESULTS" + " " * 19)
+        print("=" * 50)
+        query_results = start_query(QUERY)
+
+        ranked_query_results = VSM(QUERY,query_results)
+        print(f"RESULT FROM QUERY: {QUERY}\n")
+        print(ranked_query_results)
+        print("\n")
+
+        query_results = start_query(QUERY2)
+
+        ranked_query_results = VSM(QUERY2,query_results)
+        print(f"RESULT FROM QUERY: {QUERY2}\n")
+        print(ranked_query_results)
+        print("\n\n\n\n")
 
 
 
         # Query and rank using PageRank
-        # ranked_pages_v2 = PageRank(content)
-        #
-        # print(f"QUERYING USING PAGERANK: {QUERY}")
-        # query_results = start_query(QUERY)
-        # query_links = get_links(query_results, limit)
-        # results = rank_pages_with_pagerank(query_links)
-        # print(f"RESULTS: {results}")
-        #
-        # print(f"QUERYING USING PAGERANK: {QUERY2}")
-        # query_results = start_query(QUERY2)
-        # query_links = get_links(query_results, limit)
-        # results = rank_pages_with_pagerank(query_links)
-        # print(f"RESULTS: {results}")
-        #
+        print("=" * 50)
+        print(" " * 17 + "PAGERANK RESULTS" + " " * 16)
+        print("=" * 50)
+        ranked_pages_v2 = PageRank(content)
+
+        print(f"QUERYING USING PAGERANK: {QUERY}")
+        query_results = start_query(QUERY)
+        query_links = get_links(query_results, limit)
+        results = rank_pages_with_pagerank(query_links)
+        print(f"RESULTS: {results}\n")
+
+        print(f"QUERYING USING PAGERANK: {QUERY2}")
+        query_results = start_query(QUERY2)
+        query_links = get_links(query_results, limit)
+        results = rank_pages_with_pagerank(query_links)
+        print(f"RESULTS: {results}")
+        print("\n\n\n\n")
+
         # Query and rank using Aggregated VSM and PageRank
+        print("=" * 50)
+        print(" " * 17 + "AGGREGATED RESULTS" + " " * 16)
+        print("=" * 50)
         page_ranked_content = PageRank(content)
+        print(f"QUERYING USING AGGREGATED: {QUERY}")
         query_results = start_query(QUERY)
         vsm_results = VSM(QUERY,query_results)
         aggregated_results = aggregate(vsm_results, page_ranked_content)
-        print(aggregated_results)
+        print(aggregated_results[:limit])
+        print("\n")
+
+
+        print(f"QUERYING USING AGGREGATED: {QUERY2}")
+        query_results = start_query(QUERY2)
+        vsm_results = VSM(QUERY,query_results)
+        aggregated_results = aggregate(vsm_results, page_ranked_content)
+        print(aggregated_results[:limit])
 
 
 

@@ -1,0 +1,17 @@
+When making a search engine, we want the search results to be as relevant as possible to the query and contain pages that the user expects find. This is the purpose of the ranking algorithms. Ranking algorithms are used to rank the pages of a search to give relevant and satisfactory results that align with the search query of the user.
+
+To rank the results, the search engine first needs a database of some webpages. These webpages are gathered by the crawler.
+
+\begin{figure}[h]
+    \centering
+    \efbox{\includegraphics[width=0.3\textwidth]{images/structure.png}}
+    \caption{The high-level structure of a search engine.}
+    \label{fig:search_engine_structure}
+\end{figure}
+
+The pages are accompanied by some metadata and keywords link to the pages.
+Where we place the ranker is highly dependant on the kind of Ranker we use.
+Ranking can take place in different parts of the pipeline of a search engine. \cref{fig:search_engine_structure} shows an example of a pipeline of a search engine. Some search engines like the one in \cref{fig:search_engine_structure} implements the ranker during the querying process, this is also known as "online" rankers, and are typically content-based ranking algorithms.
+The ranking then takes place after the user has provided a query. When a user makes a query, e.g. "How to bake potatoes", the ranker will take the query, and perform some calculation depending on the algorithm used to provide scores for each page that is then used to give results that is relevant to baking potatoes.
+Other 
+There are other rankers that work by ranking after the indexer has done its job, these algorithms we call "offline" rankers and are typically link-based ranking algorithms. This is for example the PageRank algorithm. Which calculates a score for each page, which can then be stored in the index for future use for queries.

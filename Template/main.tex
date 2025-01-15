@@ -1,19 +1,56 @@
-%--------------------
-% Packages
-% -------------------
-\documentclass[letterpaper,10pt]{article}
+\documentclass[article,10pt]{article}
 \input{setup/preamble.tex}
-%-----------------------
-% Begin document
-%-----------------------
+ 
 \begin{document}
-\input{content/Introduction}
-\input{content/Topic}
-\input{content/Implementation}
-Let's cite! Einstein's journal paper \cite{copetSimpleControllableMusic2024} and Dirac's
-book.
-\input{content/Discussion}
-\input{content/Conclusion}
+ \begin{tabular}{@{}p{\textwidth}@{}}
+    \begin{center}
+    \vspace{0.5cm} % Above title
+    \Huge{\textbf{
+      Link based ranking and impact on index % insert your title here
+    }}
+    \vspace{0.5cm} % Under title
+    \end{center}
+        % Comment this section in if you are doing Bachelor or Master Project 
+   \begin{center}
+    {\Large
+      Web Intelligence - Software 7
+      %Master Project
+    }
+   \end{center}
+   
+  \end{tabular}
+
+\pagenumbering{arabic}
+%--------------------%
+%------SECTIONS------%
+%--------------------%
+
+\section{Describe how and where ranking comes into the picture in basic search engine architecture}
+\input{content/1-Describe_how_and_where_ranking_comes_into_the_picture_in_basic_search_engine_architecture}
+
+
+\section{Explain and discuss your implementation of PageRank or the HITS algorithms and where you cut corners. What are the basic differences between the two algorithms?}
+\input{content/2-Explain_and_discuss_your_implementation_of_PageRank_or_the_HITS_algorithms_and_where_you_cut_corners_What_are_the_basic_differences_between_the_two_algorithms.tex}
+
+
+\section{Discuss how you have stored your page rank in index and/or how it effects the index.}
+\input{content/3-Discuss_how_you_have_stored_your_page_rank_in_index_andor_how_it_effects_the_index.tex}
+
+
+\section{Show examples of the results of queries also together with content ranking on the data from your crawler.}
+\input{content/4-Show_examples_of_the_results_of_queries_also_together_with_content_ranking_on_the_data_from_your_crawler.tex}
+
+
+\section{Compare the results of content-based ranker and link-based ranker and discuss them.}
+\input{content/5-Compare_the_results_of_content-based_ranker_and_link-based_ranker_and_discuss_them.tex}
+
+
+\section{Compare also the aggregated rank from both rankers in comparison to just single rankers}
+\input{content/6-Compare_also_the_aggregated_rank_from_both_rankers_in_comparison_to_just_single_rankers.tex}
+%--------------------%
+%----BIBLIOGRAPHY----%
+%--------------------%
 \bibliographystyle{abbrv}
-\bibliography{setup/WebIntelligenceExam} % Name of your .bib file (without the extension)
+\bibliography{setup/WebIntelligenceExam}
+
 \end{document}

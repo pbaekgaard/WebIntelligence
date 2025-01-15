@@ -1,0 +1,23 @@
+Another approach to ranking is aggregating rankers. One approach to this, is using \cref{formula:aggregation}.
+Using the formula, you are able to get a combined score based on two different rankers. The $\beta$ value, is used to determine which of the rankers to priotitize.
+
+Due to time constraints, i didn't have time to succesfully implement an aggregated ranker. However, i theorize that an aggregated ranker using a link-based ranker like PageRank and a content-based ranker like \gls{vsm} would yield better results compared to just using PageRank. I expect this, because this aggregated ranker would allow for fine-tuning both the quality (via PageRank) and the relevance (via \gls{vsm}) of the results returned by the search engine.
+By utilizing an aggregated ranker combining PageRank and \gls{vsm}, we are able to still prioritize high quality pages, while pushing up the most relevant of the top quality pages. I presume the results would therefore be of higher quality, as for comparing it to just using PageRank.
+In contrast to the aggregated ranker, the PageRank algorithm alone will only prioritize the pages that is most likely visited, delimited by the query. While the Aggregated ranker will push up the more relevant pages of these pages.
+
+\begin{figure}[H]
+    \centering
+    \fbox{%
+        \parbox{0.85\linewidth}{%
+            \begin{equation}
+                \text{Score} = (\beta \cdot \text{ScoreA}) + ((1 - \beta) \cdot \text{ScoreB})
+                \label{formula:aggregation} % Labeling the formula
+            \end{equation}
+        }
+    }\\[6pt]
+    \parbox{0.85\linewidth}{% Use parbox for multiline text
+    \textbf{Formula \ref{formula:aggregation}}: Formula for calculating the score by aggregating two ranking algorithms.\\
+\textbf{$\beta$}: Weight to determine which ranking algorithm to prioritize, where $\beta \in [0, 1]$.\\
+    \textbf{ScoreA}: Score from Ranker A.\\
+    \textbf{ScoreB}: Score from Ranker B.}
+\end{figure}

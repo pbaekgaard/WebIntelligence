@@ -1,0 +1,27 @@
+In terms of implementing a ranker for a search engine, there are 2 classes of rankers to look at. The Content-based Rankers, and the Link-based rankers. The content based rankers, tries to rank the pages from a query, purely based on the content of the query and the documents in the database. The Link-based rankers will delimit the database from the query and rank based on a score calculated based on the authority of the pages (Quality). \label{sec:rankers}
+
+For the implementation of a link-based ranker, the PageRank was the one that i have implemented.
+\begin{algorithm}[H]
+\caption{PageRank(Index : Index after crawling, $\alpha$ : 0.85)}
+\label{alg:page-rank}
+\begin{algorithmic}[H]
+\STATE Initialize \(q \gets \frac{1}{N}\) for all \(N\) pages (uniform distribution)
+\STATE Initialize \(U \gets \frac1N\) for all transitions
+\STATE Initialize \(T \gets \) Set the transition to \(\frac1L\) for all links to pages on the page, where L = number of links
+\STATE Initialize \(P \gets (1-\alpha)\cdot T+\alpha\cdot U\) 
+\WHILE{q not converged}
+\STATE \(q \gets q\cdot P\) 
+\ENDWHILE
+\FOR{\(Page\) in \(Pages\)}
+\STATE \(Page.Score \gets q_{Page}\)
+\ENDFOR
+\end{algorithmic}
+\end{algorithm}
+In \cref{alg:page-rank} i have written a pseudo code showing the implementation of PageRank.
+The algorithm works by taking in the index after the crawler has finished. The crawler will find all the links on each of the pages and keep track of these. Inside the PageRank algorithm, i then initialize the uniform distribution \(q\) which contains the final scores for the pages when the algorithm is done. We create U which is the same format as the probability matrix \(P\) but with all values set to \(\frac1N\). \(P\) is then set using the formula \(P \gets (1-\alpha)\cdot T+\alpha\cdot U\).
+We repeatably multiply each iteration of \(q\) on to \(P\) until convergence where we then assign the scores for each page. 
+By using this algorithm, the ranking is performed in an "offline" manner, meaning that the ranking is before before the query. That way the results for the enduser is much faster than "online" algorithms. 
+When the user performs a query, we use query processing to get the pages that comes close to the query and sort them by their PageRank score.
+Another implementation of link-based ranking that could have been implemented was the HITS algorithm.
+The way HITS differs from PageRank, is that HITS works in an "online" basis (after user has given a query). It takes a subset of the results from something like a content based ranker and then take all the neighboring pages to thosepages.
+You then keep track of two scores: The Authoritive Score, and the Hub Score. Authorive Score tells us how relevant the page is to the query and the Hub Score doesnt necessarily tell us the revelance but tells us how good it is a pointing to relevant pages. These two scores are then used until convergence where we rank on the authorative scores of the pages.

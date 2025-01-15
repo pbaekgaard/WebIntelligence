@@ -1,0 +1,10 @@
+If we look at the different ranking algorithms, and how they affect the index, we will see a few differences in terms of implementation needs.
+We can see a significant difference in size of the index. A search engine that implements a content-based ranker like \gls{vsm}, would need to store the term weight and normalized term weight for each word in a page. This leads to a huge index file as each page contains a large number of words. 
+Contrarily if we look at an algorithm like PageRank, we only need to store the outlinks of each page and the score. Further more we also need to store an index of all keywords and which pages they appear in for the query processor to delimit the pages to only show ones that contain the query words.
+
+
+As for storing the ranks from the ranking algorithm previous explained (see \cref{alg:page-rank}), i have chosen to store the scores in the index by each of the page using a key called Score.
+Doing it this way, makes the implementation very easy for ranking pages for a query, as we only need to get the subset of pages that satisfy the query and rank based on the key of the pages.
+
+If we look at the different ranking algorithms, and the way they evolve the index. We can see a significant difference in size of the index. A search engine that implements the PageRank algorithm, would only need to have an index of the keywords and their associated documents, and the documents would only need their scores.
+If we look at other algorithms like the \gls{vsm}

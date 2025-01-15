@@ -4,15 +4,23 @@
 
 \usepackage[utf8x]{inputenc}
 \usepackage[T1]{fontenc}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+
 %\usepackage{gentium}
 \usepackage{mathptmx} % Use Times Font
-
-
+\usepackage{efbox}
+\efboxsetup{linecolor=black,linewidth=1pt,margin=10pt}
+\usepackage{wrapfig}
 \usepackage[pdftex]{graphicx} % Required for including pictures
 \usepackage{babel}
-
+% Set up how figure and table captions are displayed
+\usepackage{caption}
+\captionsetup{%
+  font=footnotesize,% set font size to footnotesize
+  labelfont=bf % bold label (e.g., Figure 3.2) font
+}
 \usepackage[pdftex,linkcolor=black,pdfborder={0 0 0}]{hyperref} % Format links for pdf
-
 \usepackage{calc} % To reset the counter in the document after title page
 \usepackage{enumitem} % Includes lists
 
@@ -27,9 +35,15 @@
 \usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
 \usepackage{fancyhdr}
 
+\usepackage{amsmath} % For math symbols
+\usepackage{amssymb} % For extra symbols
+\usepackage{tikz}    % For drawing (optional)
+
 \pagestyle{fancy}
-\fancyhf{} % Clear all headers and footers
+\fancyhead{}
 \lhead{\name \\ \studynr \\ \fieldofstudy}
+\fancyfoot{}
+\fancyfoot[R]{\thepage}
 % \setlength{\headheight}{15pt} % Adjust as needed (default is 12pt)
 \setlength{\headsep}{40pt} % Space between the header and the body
 %-----------------------
@@ -41,5 +55,17 @@ pdftitle = {WI Exam 2025, written assignment},
 pdfauthor = {Peter Bækgaard}
 }
 
+%% CLEVERREF AT THE BOTTOM
+\usepackage{cleveref}
+% Configure cref for figures
+\crefname{figure}{figure}{figures} % Singular and plural lowercase
+\Crefname{figure}{Figure}{Figures} % Singular and plural capitalized
 
+% Create a custom "formula" environment
+\newenvironment{formula}[1][]{\begin{equation}#1}{\end{equation}}
 
+% Change "figure" to "formula" for cleveref
+\crefname{equation}{formula}{formulas}
+
+\usepackage[toc, acronym]{glossaries}
+\newacronym{vsm}{VSM}{Vector-Space Model}

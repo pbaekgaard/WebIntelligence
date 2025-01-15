@@ -1,0 +1,10 @@
+Different rankers can give different results due to their implementation and how they work. For Example, as explained in \cref{sec:rankers} there are 2 classes of rankers, the content-based and link-based rankers.
+Content-based rankers like \gls{vsm}. \gls{vsm} works by calculating the inverse document frequency and term frequency comparing the query to documents using this. While this approach is very fast and has low overhead, it generally achieves subpar results compared to a link-based approach. The reason for this is because the results of the content-based rankers are generally relevant pages. But they do not take quality into account, which is what the link-based rankers tries to implement.
+Looking at the results in \cref{fig:result-compare}, we see the results from the Link-Based Ranker is better in terms of quality, while also keeping the results relatively relevant, with results a user would expect to find when searching for Princess Diana, like \textit{royal.gov.uk} etc.
+On the other hand, the Content-Based Ranker also gave relevant results, we see that the results are of low quality, with results like auctions or x-rated content.
+\begin{figure}[h]
+    \centering
+    \efbox{\includegraphics[width=0.64\textwidth]{images/ranker-compare.png}}
+    \caption{Example of results from different rankers \cite{dologLecture5Slide}\\\textbf{Engine 1:} Link-Based Ranker\\\textbf{Engine 2:} Content-Based Ranker}
+    \label{fig:result-compare}
+\end{figure}

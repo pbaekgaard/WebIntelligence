@@ -1,0 +1,46 @@
+
+
+{
+    "https://dr.dk": {
+        "url": "https://dr.dk",
+        "title": "DR: Nyheder - Breaking - TV - Radio",
+        "Score": 0.15,
+        "outgoing_links": [
+            "https://dr.dk/drtv/",
+            "https://dr.dk/lyd/",
+            ...
+        ]
+    },
+    "https://dr.dk/lyd/": {
+        "url": "https://dr.dk/lyd/",
+        "title": "Radio & Podcast fra DR - Hør netradio og podcast her | DR LYD",
+        "Score": 0.09,
+        "outgoing_links": [
+            "https://dr.dk/",
+            "https://dr.dk/drtv/",
+            ...
+        ]
+    }
+
+    "https://dr.dk/drtv/": {
+        "url": "https://dr.dk/drtv/",
+        "title": "DRTV - Stream TV online her | DRTV",
+        "Score": 0.11,
+        "outgoing_links": [
+            "https://dr.dk/",
+            "https://dr.dk/lyd/",
+            ...
+        ]
+    },
+    "https://dr.dk/lyd/": {
+        "url": "https://dr.dk/lyd/",
+        "title": "Radio & Podcast fra DR - Hør netradio og podcast her | DR LYD",
+        "Score": 0.09,
+        "outgoing_links": [
+            "https://dr.dk/",
+            "https://dr.dk/drtv/",
+            ...
+        ]
+    }
+}
+
